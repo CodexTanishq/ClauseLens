@@ -5,8 +5,15 @@ from __future__ import annotations
 import html
 import io
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+# Ensure the repo root is on sys.path so `docanalyzer` is importable
+# whether the app is run locally or deployed on Streamlit Community Cloud.
+_repo_root = Path(__file__).resolve().parent.parent
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
 
 import streamlit as st
 import streamlit.components.v1 as components
