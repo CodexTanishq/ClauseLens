@@ -2,6 +2,8 @@
 
 ClauseLens is a production-oriented contract and agreement analyzer. It performs extractive question answering using fine-tuned RoBERTa models to locate key clauses, compute dates and duration, flag potential risks, and cite exact textual evidence from agreements.
 
+Direct Link to deployed app : https://clause-lens.streamlit.app/
+
 ---
 
 ## Architecture Overview
