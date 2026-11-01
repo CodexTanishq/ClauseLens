@@ -1,0 +1,6 @@
+# Add forbidden words or sensitive identifiers here, one per line.
+# Any text file in this repository matching these exact words will fail test_no_personal_data.py.
+placeholder_secret_key
+my_secret_token
+confidential_company_name
+

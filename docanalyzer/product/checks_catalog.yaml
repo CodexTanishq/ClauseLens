@@ -1,0 +1,208 @@
+# ClauseLens Contract Checks Catalog
+# Severity levels: 'important' (critical risk), 'check' (cautionary review), 'info' (informational finding)
+
+active_checks:
+  - id: G1
+    name: governing_law_foreign
+    title: Foreign or non-local governing law
+    applies_to: all
+    severity: check
+    why: Disputes follow this law and these courts. A foreign law or a far-away court makes a dispute expensive.
+    message_template: "Governing law cited: '{law}'. Verify the jurisdiction and court locations."
+    status: active
+    needs: [Governing Law]
+
+  - id: G2
+    name: auto_renewal
+    title: Automatic renewal clause
+    applies_to: all
+    severity: check
+    why: The contract may renew by itself unless you tell them in time.
+    message_template: "The contract contains automatic renewal language. Notice required to prevent renewal: {notice}."
+    status: active
+    needs: [Renewal Term, Notice Period To Terminate Renewal]
+
+  - id: G3
+    name: early_termination
+    title: Early termination for convenience
+    applies_to: all
+    severity: info
+    why: Allows either party or one party to end the agreement early without showing a breach.
+    message_template: "Early termination rights found: '{clause}'."
+    status: active
+    needs: [Termination For Convenience]
+
+  - id: G4
+    name: date_sanity
+    title: Inconsistent or backward dates
+    applies_to: all
+    severity: important
+    why: Dates that run backwards are often typing mistakes and can cause disputes.
+    message_template: "Date inconsistency detected: {details}."
+    status: active
+    needs: [parsed_dates]
+
+  - id: G5
+    name: liability
+    title: Liability limitation clause
+    applies_to: all
+    severity: info
+    why: Limits how much one or both parties can recover in damages.
+    message_template: "Liability terms identified: '{clause}'."
+    status: active
+    needs: [Cap On Liability, Uncapped Liability]
+
+  - id: G6
+    name: signature_block
+    title: Missing signing or execution block
+    applies_to: all
+    severity: check
+    why: No signing text was found. This may be an unsigned draft, or the signature page is an image we cannot read.
+    message_template: "No standard execution or signature block detected in the text."
+    status: active
+    needs: [raw_text]
+
+  - id: G7
+    name: assignment
+    title: Restriction on assignment
+    applies_to: all
+    severity: info
+    why: Governs whether duties or rights can be transferred to a third party.
+    message_template: "Assignment restrictions found: '{clause}'."
+    status: active
+    needs: [Anti-Assignment]
+
+  - id: R1
+    name: rental_registration
+    title: Lease registration requirement
+    applies_to: rental_lease
+    severity: important
+    why: Leases longer than a year normally have to be registered. Many rent agreements run 11 months for this reason.
+    message_template: "{details}"
+    status: active
+    needs: [tenure, raw_text]
+
+  - id: R2
+    name: rental_stamp
+    title: Stamp duty reference missing
+    applies_to: rental_lease
+    severity: check
+    why: Rent agreements are normally made on stamp paper or e-stamped. The stamp duty differs by state.
+    message_template: "No mention of stamp duty, stamp paper, or e-stamping was found in the text."
+    status: active
+    needs: [raw_text]
+
+  - id: E1
+    name: post_employment_noncompete
+    title: Post-employment non-compete clause
+    applies_to: employment
+    severity: important
+    why: Rules that stop you from working elsewhere after you leave are often not enforceable in India, but the clause can still be used to pressure you. Read it.
+    message_template: "Post-termination restrictive covenant found: '{clause}'."
+    status: active
+    needs: [Non-Compete, raw_text]
+
+  - id: E2
+    name: bond
+    title: Employment bond or training cost recovery
+    applies_to: employment
+    severity: important
+    why: You may have to pay money if you leave early.
+    message_template: "Employment bond or recovery terms detected: '{clause}'."
+    status: active
+    needs: [raw_text]
+
+  - id: E3
+    name: benefits_not_mentioned
+    title: Statutory employee benefits unstated
+    applies_to: employment
+    severity: check
+    why: Standard benefits are not mentioned. Ask where they are written down.
+    message_template: "No mention of standard benefits (PF, Gratuity, ESI, or statutory leave) found."
+    status: active
+    needs: [raw_text]
+
+  - id: L1
+    name: lender_can_change
+    title: Unilateral term modification
+    applies_to: loan
+    severity: check
+    why: The lender may be able to change the cost of the loan on its own.
+    message_template: "Lender discretion clause found: '{clause}'."
+    status: active
+    needs: [raw_text]
+
+  - id: L2
+    name: acceleration
+    title: Immediate loan recall or acceleration
+    applies_to: loan
+    severity: check
+    why: The lender may be able to demand the whole loan back at once.
+    message_template: "Loan acceleration clause found: '{clause}'."
+    status: active
+    needs: [raw_text]
+
+planned_checks:
+  - id: P1
+    title: Security deposit exceeds statutory limit
+    applies_to: rental_lease
+    severity: check
+    why: Deposit above two months of rent may violate state rent control guidelines.
+    status: not_checked
+
+  - id: P2
+    title: Unequal or excessive lock-in period
+    applies_to: rental_lease
+    severity: check
+    why: Lock-in periods longer than notice or one-sided obligations restrict moving out.
+    status: not_checked
+
+  - id: P3
+    title: Automatic rent escalation
+    applies_to: rental_lease
+    severity: info
+    why: Review the percentage and frequency of scheduled rent increases.
+    status: not_checked
+
+  - id: P4
+    title: Probation terms and confirmation
+    applies_to: employment
+    severity: check
+    why: Details regarding confirmation or extension of the probation period.
+    status: not_checked
+
+  - id: P5
+    title: Salary structure and deductions
+    applies_to: employment
+    severity: info
+    why: Specific breakdown of fixed vs variable salary components.
+    status: not_checked
+
+  - id: P6
+    title: Notice period mismatch
+    applies_to: employment
+    severity: important
+    why: Asymmetrical notice periods where employee notice exceeds employer notice.
+    status: not_checked
+
+  - id: P7
+    title: Prepayment penalty on floating-rate individual loan
+    applies_to: loan
+    severity: important
+    why: Prepayment charges on floating-rate personal loans are restricted under RBI regulations.
+    status: not_checked
+
+  - id: P8
+    title: Penal charges undisclosed
+    applies_to: loan
+    severity: check
+    why: Default interest and penal charge calculations should be explicitly listed.
+    status: not_checked
+
+  - id: P9
+    title: Collateral and personal guarantor liability
+    applies_to: loan
+    severity: important
+    why: Scope of guarantor personal liability and collateral encumbrance.
+    status: not_checked
+

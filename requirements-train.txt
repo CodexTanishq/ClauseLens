@@ -1,0 +1,15 @@
+datasets==5.1.0
+evaluate==0.4.6
+accelerate==1.15.0
+pandas==3.1.0
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
+torch==2.14.1
+transformers==5.20.2
+python-dateutil==3.0.0
+PyYAML==6.0.3
+regex==2026.9.29
+pytest>=8.0.0
+matplotlib>=3.9.0
+

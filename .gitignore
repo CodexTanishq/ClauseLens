@@ -1,0 +1,28 @@
+# Environment and cache
+.cuad_env/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Outputs, local data, models
+outputs/
+data/
+cuad_roberta_*/
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.safetensors
+models/*.pkl
+models/*.npy
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.pkl
+*.npy
+
+# Secrets and local config
+.env
+.streamlit/secrets.toml
+.forbidden_words.txt
+

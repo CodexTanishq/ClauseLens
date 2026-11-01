@@ -1,0 +1,16 @@
+{
+  "train_rows": 4922,
+  "validation_rows": 527,
+  "test_rows": 1244,
+  "train_answer_stats": {
+    "count": 10042,
+    "median": 41.0,
+    "p90": 136.0,
+    "p95": 184.0,
+    "p99": 346.0,
+    "max": 593,
+    "recommended_max_answer_length": 346
+  },
+  "categories_count": 40
+}
+
